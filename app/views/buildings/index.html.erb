@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Buildings</h1>
+<div class="row">
+  <h1>Buildings</h1>
+  <span class="ml-4">
+    <%= link_to 'New Company', new_company_path, class: "btn btn-primary" %>
+  </span>
+</div>
 
 <table class="table table-hover mb-4">
   <thead>
@@ -38,5 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Company', new_company_path, class: "btn btn-primary" %>

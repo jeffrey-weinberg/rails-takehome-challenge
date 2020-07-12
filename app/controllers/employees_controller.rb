@@ -9,6 +9,10 @@ class EmployeesController < ApplicationController
     @company_offices = Office.where(company_id: @company).map do |office|
       [office.building.name, office.building.id]
     end
+
+    if @company_offices.empty?
+      redirect_to company_path(@company), notice: 'You need an office before you can hire employees'
+    end
   end
 
   def create
