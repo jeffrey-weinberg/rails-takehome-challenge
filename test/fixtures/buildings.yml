@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  country: MyString
-  address: MyString
-  rent_per_floor: 9.99
-  number_of_floors: 1
+  name: Mordor
+  country: USA
+  address: 123 Main St
+  rent_per_floor: 2239.99
+  number_of_floors: 2
 
 two:
-  name: MyString
-  country: MyString
-  address: MyString
-  rent_per_floor: 9.99
-  number_of_floors: 1
+  name: The Shire
+  country: Canada
+  address: 5555 Quebec Ave
+  rent_per_floor: 1219.99
+  number_of_floors: 5
