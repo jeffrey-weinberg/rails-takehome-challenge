@@ -25,4 +25,14 @@ class Building < ApplicationRecord
 
     floors_list
   end
+
+  def total_employees
+    total_employees = 0
+
+    offices.each do |office|
+      total_employees += office.employees.count
+    end
+
+    total_employees
+  end
 end

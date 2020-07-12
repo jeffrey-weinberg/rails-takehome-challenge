@@ -1,29 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @building.name %>
-</p>
+<%= link_to 'Back', buildings_path, class: 'btn btn-primary mb-4' %>
 
-<p>
-  <strong>Country:</strong>
-  <%= @building.country %>
-</p>
+<div class="card">
+  <div class="card-header">
+    <strong>Building Name:</strong>
+    <%= @building.name %>
+  </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @building.address %>
-</p>
+  <div class="card-body">
+    <div>
+      <strong>Country:</strong>
+      <%= @building.country %>
+    </div>
 
-<p>
-  <strong>Rent per floor:</strong>
-  <%= @building.rent_per_floor %>
-</p>
+    <div>
+      <strong>Address:</strong>
+      <%= @building.address %>
+    </div>
 
-<p>
-  <strong>Number of floors:</strong>
-  <%= @building.number_of_floors %>
-</p>
+    <div>
+      <strong>Rent per floor:</strong>
+      <%= @building.rent_per_floor %>
+    </div>
 
-<%= link_to 'Edit', edit_building_path(@building) %> |
-<%= link_to 'Back', buildings_path %>
+    <div>
+      <strong>Number of floors:</strong>
+      <%= @building.number_of_floors %>
+    </div>
+
+    <div>
+      <strong>Companies:</strong>
+      <ul>
+        <% @building.companies.uniq.each do |company| %>
+          <li><%= link_to company.name, company %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div>
+      <strong>Total Employees in Building:</strong>
+      <%= @building.total_employees %>
+    </div>
+  </div>
+</div>
