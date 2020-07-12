@@ -1,4 +1,17 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :buildings
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'buildings#index'
+
+  resources :buildings, only: %i[index show] do
+    resources :offices, only: %i[index show new create] do
+      resources :companies, only: %i[index show] do
+        resources :employees, only: %i[new create destroy]
+      end
+    end
+  end
+
+  resources :companies do
+    resources :employees, only: %i[new create destroy]
+  end
 end

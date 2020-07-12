@@ -23,13 +23,7 @@
         <td><%= building.rent_per_floor %></td>
         <td><%= building.number_of_floors %></td>
         <td><%= link_to 'Show', building %></td>
-        <td><%= link_to 'Edit', edit_building_path(building) %></td>
-        <td><%= link_to 'Destroy', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Building', new_building_path %>
