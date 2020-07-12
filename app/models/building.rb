@@ -10,4 +10,19 @@ class Building < ApplicationRecord
   validates :address, presence: true
   validates :rent_per_floor, presence: true
   validates :number_of_floors, presence: true
+
+  def monthly_revenue
+    number_of_occupied_floors = offices.count
+    number_of_occupied_floors * rent_per_floor
+  end
+
+  def available_floors
+    floors_list = * (1..number_of_floors)
+
+    offices.each do |office|
+      floors_list.delete(office.floor)
+    end
+
+    floors_list
+  end
 end
