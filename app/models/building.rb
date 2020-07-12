@@ -35,4 +35,8 @@ class Building < ApplicationRecord
 
     total_employees
   end
+
+  def full?
+    available_floors.empty?
+  end
 end

@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Back', buildings_path, class: 'btn btn-primary mb-4' %>
+
+<h1 class="mb-4">
+  <%= @company.name %>
+</h1>
+
+<div class="company-container">
+  <% unless @company.offices.empty? %>
+    <div class="card" id="office-card">
+      <div class="card-header">Offices: </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+        <% @company.offices.each do |office|%>
+          <li class="list-group-item">
+            <div>Building: <%= office.building.name %></div>
+            <div>Floor: <%= office.floor %></div>
+            <div>Employee Count: <%= office.employees.count %></div>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" id="rent-card">
+      <div class="card-header">Total Rent per Month: </div>
+      <div class="card-body">
+        $<%= @company.total_rent_per_month %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <div class="card" id="new-rental-card">
+    <div class="card-header">Would you like to rent an office?</div>
+    <% Building.all.each do |building|%>
+      <% unless building.full? %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+              <strong>Building:</strong> <%= building.name %>
+              <br />
+              <strong>Available Floors: </strong>
+              <% building.available_floors.each do |floor| %>
+                <%= link_to floor, new_building_office_path(building, company: @company.id, floor: floor) %>
+              <% end %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="card" id="employee-card">
+    <div class="card-header">Employee List</div>
+
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @company.employees.each do |employee| %>
+            <tr>
+              <td><%= employee.name %></td>
+              <td><%= employee.title %></td>
+              <td><%= link_to 'Remove', company_employee_path(@company, employee), method: :delete, 'data-confirm': 'Are you sure you want to remove this employee?' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-footer d-flex justify-content-center">
+      <%= link_to 'Add Employee', new_company_employee_path(@company), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

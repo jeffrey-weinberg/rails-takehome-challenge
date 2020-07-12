@@ -1,0 +1,34 @@
+<%= form_with(model: office, local: true) do |form| %>
+  <% if office.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
+
+      <ul>
+        <% office.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h4>Company: <%= @office.company.name %></h4>
+    <%= form.label :company_id %>
+    <%= form.text_field :company_id, value: @office.company.id, readonly: true %>
+  </div>
+
+  <div class="field">
+    <h4><%= @office.building.name %></h4>
+    <%= form.label :building_id %>
+    <%= form.text_field :building_id, value: @office.building.id, readonly: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floor %>
+    <%= form.text_field :floor, value: @office.floor, readonly: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Rent Office', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :companies do
     resources :employees, only: %i[new create destroy]
   end
+
+  resources :offices, only: %i[new create show]
 end

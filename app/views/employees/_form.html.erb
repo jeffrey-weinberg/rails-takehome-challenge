@@ -1,0 +1,32 @@
+<%= form_with(scope: :employee, url: company_employees_path, local: true) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+        <% employee.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :office %>
+    <%= form.select :office_id, options_for_select(@company_offices) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Add Employee', class: 'btn btn-primary' %>
+  </div>
+<% end %>

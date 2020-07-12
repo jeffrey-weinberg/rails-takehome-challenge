@@ -1,0 +1,10 @@
+<%= link_to 'Back', buildings_path, class: 'btn btn-primary mb-4' %>
+
+<div class="card">
+  <div class="card-header">
+    <h2>New Office</h2>
+  </div>
+  <div class="card-body">
+    <%= render 'form', office: @office %>
+  </div>
+</div>
